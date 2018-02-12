@@ -1,23 +1,27 @@
 package sample;
 
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
-public class Controller {
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    private static final String SQCONN = "jdbc:sqlite:school.sqlite";
+public class Controller implements Initializable{
+    private loginModel loginModel = new loginModel();
+    @FXML
+    private Label dbStatus;
 
-    public static Connection getConnection() throws SQLException {
-        try {
-            Class.forName("org.sqlite.JDBC");
-            return DriverManager.getConnection(SQCONN);
-        }catch (ClassNotFoundException ex){
-            ex.printStackTrace();
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        if (this.loginModel.isDatabaseConnection()){
+            this.dbStatus.setText("Connection to DB");
+        }else {
+            this.dbStatus.setText("Not Connected to DB");
         }
 
-        return null;
-        
-    }//getConnection
-}//class
+
+
+    }
+}//initialize
+
