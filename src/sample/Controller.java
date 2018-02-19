@@ -1,9 +1,11 @@
 package sample;
 
+import Admin.AdminController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -43,9 +45,11 @@ public class Controller implements Initializable {
                 Stage Stage = (Stage) this.btnLogin.getScene().getWindow();
                 Stage.close();
 
+                adminLogin();
+
 
             } else {
-                JOptionPane.showMessageDialog(null, "Your username or password is not corrected.");
+                JOptionPane.showMessageDialog(null, "Your username or password is invalid.");
             }
         } catch (Exception localException) {
             localException.printStackTrace();
@@ -56,14 +60,22 @@ public class Controller implements Initializable {
         try {
             Stage adminStage = new Stage();
             FXMLLoader adminLoader = new FXMLLoader();
-            Pane admininRoot = adminLoader.load(getClass().getClass().getResource("" + "/Admin/AdminDashBoard.fxml")
-                    .openStream());
+            Pane adminRoot =(Pane) adminLoader.load(getClass().getClass().getResource("" + "/Admin/AdminDashBoard.fxml").openStream());
+
+            AdminController adminController = (AdminController) adminLoader.getController();
+            Scene scene = new Scene(adminRoot);
+            adminStage.setScene(scene);
+            adminStage.setTitle("Admin Dashboard");
+            adminStage.setResizable(false);
+            adminStage.show();
+
+
         } catch (IOException ex){
             ex.printStackTrace();
         }
 
-        JOptionPane.showMessageDialog(null, "Welcome to our System.");
-    }
+//        JOptionPane.showMessageDialog(null, "Welcome to Our System.");
+    }//adminLogin
 
 }
 

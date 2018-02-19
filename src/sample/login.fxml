@@ -47,7 +47,7 @@
             <Image url="@../image/icons8_Password_100px.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnlogin" layoutX="393.0" layoutY="185.0" onAction="#Login" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: #80d8ff;" text="Login" textFill="#1b1b1a">
+      <JFXButton fx:id="btnLogin" layoutX="393.0" layoutY="185.0" onAction="#Login" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: #80d8ff;" text="Login" textFill="#1b1b1a">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
